@@ -13,7 +13,6 @@ public class InstaKill : MonoBehaviour
         {
             onContact.Invoke();
             Instantiate(sangre, collision.GetContact(0).point, Quaternion.identity);
-            collision.gameObject.GetComponent<ControlesPlayer>().transform.position = CheckPointSystem.instance.UltimaPos;
         }
     }
 }
