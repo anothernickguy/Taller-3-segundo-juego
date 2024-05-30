@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectController2D : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float slowDownSpeed = 2f; // Velocidad reducida cuando se presiona espacio
     private Rigidbody2D rb2d;
     private bool isFalling = false;
 
@@ -28,11 +29,14 @@ public class ObjectController2D : MonoBehaviour
         // Si no hay Rigidbody2D, no hacer nada
         if (rb2d == null) return;
 
+        // Comprobar si la tecla de espacio está presionada
+        bool isSpacePressed = Input.GetKey(KeyCode.Space);
+
         // Movimiento del objeto con las flechas izquierda y derecha
-        float move = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        float move = Input.GetAxis("Horizontal") * (isSpacePressed ? slowDownSpeed : moveSpeed) * Time.deltaTime;
         transform.Translate(move, 0, 0);
 
-        // Al presionar la barra espaciadora, se suelta el objeto
+        // Al presionar la barra espaciadora y soltar el objeto
         if (Input.GetKeyDown(KeyCode.Space) && !isFalling)
         {
             rb2d.isKinematic = false;
@@ -40,4 +44,5 @@ public class ObjectController2D : MonoBehaviour
         }
     }
 }
+
 
