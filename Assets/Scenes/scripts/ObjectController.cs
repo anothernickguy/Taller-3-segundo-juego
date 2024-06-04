@@ -9,7 +9,8 @@ public class ObjectController2D : MonoBehaviour
     private Rigidbody2D rb2d;
     private Collider2D collider2d;
     private bool isFalling = false;
-    public GameObject objetoAActivar; // Objeto que se activará
+    public GameObject objetoAActivar; // Objeto que se activará al presionar "X"
+    public GameObject objetoAActivarConOjo; // Objeto que se activará al colisionar con "ojo"
 
     void Start()
     {
@@ -34,10 +35,15 @@ public class ObjectController2D : MonoBehaviour
         // Inicialmente, deshabilitamos la física del Rigidbody2D para que el objeto no caiga
         rb2d.isKinematic = true;
 
-        // Desactivar el objeto que se activará
+        // Desactivar los objetos que se activarán
         if (objetoAActivar != null)
         {
             objetoAActivar.SetActive(false);
+        }
+
+        if (objetoAActivarConOjo != null)
+        {
+            objetoAActivarConOjo.SetActive(false);
         }
     }
 
@@ -72,6 +78,27 @@ public class ObjectController2D : MonoBehaviour
             {
                 StartCoroutine(ActivateObjectForSeconds(0.5f));
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ojo"))
+        {
+            StopFallingAndActivateObject();
+        }
+    }
+
+    private void StopFallingAndActivateObject()
+    {
+        if (rb2d != null)
+        {
+            rb2d.velocity = Vector2.zero;
+            rb2d.isKinematic = true; // Detener la caída
+        }
+        if (objetoAActivarConOjo != null)
+        {
+            objetoAActivarConOjo.SetActive(true); // Activar el objeto
         }
     }
 
