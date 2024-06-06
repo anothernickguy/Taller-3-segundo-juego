@@ -7,12 +7,13 @@ public class InstaKill : MonoBehaviour
 {
     public GameObject sangre;
     public UnityEvent onContact;
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.transform.CompareTag("Player"))
         {
             onContact.Invoke();
-            Instantiate(sangre, collision.GetContact(0).point, Quaternion.identity);
+            collision.gameObject.SetActive(false);
+            Instantiate(sangre, collision.transform.position, Quaternion.identity);
         }
     }
 }
