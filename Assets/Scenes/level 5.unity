@@ -7288,8 +7288,24 @@ PrefabInstance:
       value: GoToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 3167118864184950137, guid: 97c4697b494c76c4e86be145f591a81c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167118864184950137, guid: 97c4697b494c76c4e86be145f591a81c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 584276510}
+    - target: {fileID: 3167118864184950137, guid: 97c4697b494c76c4e86be145f591a81c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSceneByName
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167118864184950137, guid: 97c4697b494c76c4e86be145f591a81c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167118864184950137, guid: 97c4697b494c76c4e86be145f591a81c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: level 6
       objectReference: {fileID: 0}
     - target: {fileID: 5976782033833523888, guid: 97c4697b494c76c4e86be145f591a81c, type: 3}
       propertyPath: m_Pivot.x
